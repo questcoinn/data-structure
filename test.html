@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structure</title>
+    <script src="./stack.js"></script>
+</head>
+<body>
+    <script>
+        const stack = new Stack();
+        stack.push(1);
+        stack.push(11);
+        console.log(`pop: ${stack.pop()}`);
+        stack.push(1123);
+        stack.push(322);
+
+        for(let i = 0; i < stack.length; i++) {
+            console.log(`index ${i}: ${stack.get(i)}`);
+        }
+    </script>
+</body>
+</html>
