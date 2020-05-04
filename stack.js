@@ -24,7 +24,7 @@ class Stack {
     }
 
     pop() {
-        if(this.length <= 0) return null;
+        if(this.length === 0) return null;
         const ret = this.#datas.pop();
         this.top--;
         this.length--;
