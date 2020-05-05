@@ -4,7 +4,7 @@
 const NULL = Symbol("null");
 
 /******************************************************************************
- * @class Stack
+ * @class   Stack
  ******************************************************************************/
 class Stack {
     #datas;
@@ -39,7 +39,8 @@ class Stack {
 }
 
 /******************************************************************************
- * @class Queue
+ * @class   Queue
+ * @todo    원형큐, 우선순위큐(?), 덱
  ******************************************************************************/
 class Queue {
     #datas;
@@ -76,6 +77,46 @@ class Queue {
         this.#datas = this.#datas.filter((element) => element !== NULL);
         this.back -= this.front;
         this.front = 0;
+    }
+}
+
+/******************************************************************************
+ * @class   Linked List
+ ******************************************************************************/
+class LinkedList {
+    #value;
+
+    constructor(element) {
+        this.#value = element;
+        this.child = null;
+    }
+
+    append(element) {
+        if(!this.child) {
+            this.child = new LinkedList(element);
+        } else {
+            const grandChild = this.child.child;
+            this.child = new LinkedList(element);
+            this.child.child = grandChild;
+        }
+        return this.child;
+    }
+
+    removeChild() {
+        if(!this.child) return null;
+        const originalChild = this.child;
+        const newChild = originalChild.child;
+        this.child = newChild;
+        originalChild.child = null;
+        return originalChild;
+    }
+
+    get() {
+        return this.#value;
+    }
+
+    next() {
+        return this.child;
     }
 }
 
