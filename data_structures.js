@@ -26,7 +26,7 @@ class Stack {
 
     pop() {
         if(this.length === 0) return NULL;
-        const ret = this.#datas.pop();
+        const ret = this.#datas[this.top];
         this.top--;
         this.length--;
         return ret;
@@ -58,7 +58,7 @@ class Queue {
     }
 
     pop() {
-        if(this.length <= 0) return NULL;
+        if(this.length <= 0) return null;
         const ret = this.#datas[this.front];
         this.#datas[this.front] = NULL;
         this.front++;
@@ -67,8 +67,8 @@ class Queue {
     }
 
     get(index) {
-        if(index < this.front || index > this.back) return NULL;
-        return this.#datas[index];
+        if(index > this.back - this.front) return null;
+        return this.#datas[this.front + index];
     }
 
     arrange() {
